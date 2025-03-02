@@ -79,11 +79,23 @@ if data is not None:
    
     df.to_excel("crypto_data.xlsx", index=False, engine="openpyxl")
 
-    
-    st.dataframe(df.style.format({"Price (USD)": "${:.2f}", "Market Cap": "${:,.0f}", "24h Volume": "${:,.0f}", "24h % C
+    st.dataframe(df.style.format({
+    "Price (USD)": "${:.2f}", 
+    "Market Cap": "${:,.0f}", 
+    "24h Volume": "${:,.0f}", 
+    "24h % Change": "{:.2f}%"
+}))
+
+    st.dataframe(df.style.format({
+    "Price (USD)": "${:.2f}", 
+    "Market Cap": "${:,.0f}", 
+    "24h Volume": "${:,.0f}", 
+    "24h % Change": "{:.2f}%"
+}))
+
 
     
-    st.download_button("📥 Download Data", data=open("crypto_data.xlsx", "rb"), file_name="crypto_data.xlsx", mime="appl
+    st.download_button("📥 Download Data", data=open("crypto_data.xlsx", "rb"), file_name="crypto_data.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
    
     fig = px.bar(df.head(10), x="Name", y="Market Cap", color="Market Cap", title="🔝 Top 10 Cryptos by Market Cap")
@@ -97,6 +109,38 @@ if data is not None:
 
 else:
     st.error("No data available. Please try again later.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
